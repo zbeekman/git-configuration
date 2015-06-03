@@ -2,6 +2,7 @@
 	name = zbeekman
 	email = zbeekman@gmail.com
 	signingkey = 92A64702
+	logallrefupdates = true
 [credential]
 	helper = osxkeychain
 [core]
@@ -112,3 +113,6 @@
 	required = true
 [init]
 	templatedir = ~/.gittemplates_global
+
+[include]
+	path = github_auth
