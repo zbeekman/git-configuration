@@ -1,5 +1,5 @@
 [user]
-	name = zbeekman
+	name = Izaak Beekman
 	email = zbeekman@gmail.com
 	signingkey = 92A64702
 	logallrefupdates = true
@@ -120,3 +120,5 @@
 	clean = git lfs clean %f
 	smudge = git lfs smudge %f
 	required = true
+[gitopen "gitlab"]
+	domain = gitlab.umiacs.umd.edu
