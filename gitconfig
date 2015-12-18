@@ -122,3 +122,7 @@
 	required = true
 [gitopen "gitlab"]
 	domain = gitlab.umiacs.umd.edu
+[rebase]
+	autosquash = true
+[apply]
+	whitespace = fix
