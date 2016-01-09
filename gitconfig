@@ -52,6 +52,7 @@
 
 [merge]
 	tool = ediff
+	conflictStyle = diff3
 
 [mergetool "ediff"]
 	cmd = ~/ediff.sh $LOCAL $REMOTE $MERGED $BASE
@@ -112,7 +113,7 @@
 	smudge = cat
 	required = true
 [init]
-	templatedir = ~/.gittemplates_global
+	templatedir = /Users/ibeekman/.gitsettings-repo/gittemplates_global
 
 [include]
 	path = github_auth
