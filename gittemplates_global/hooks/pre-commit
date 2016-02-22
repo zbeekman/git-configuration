@@ -17,6 +17,10 @@ find_in_cwd_or_parent() {
   return 1
 }
 
+function ends_with_newline() {
+  test ! -s "$1" || test $(tail -r -c1 "$1" | xxd -ps) = "0a"
+}
+
 if git rev-parse --verify HEAD >/dev/null 2>&1
 then
 	against=HEAD
@@ -85,6 +89,19 @@ if ([ -f "${travis_yml}" ] && [ -f "/usr/local/bin/update_travis_ci_status" ]); 
     fi
 fi
 git stash pop -q
+
+# If there is a file that do not end with a newline, print it's name and fail.
+for f in $(git diff-index --name-status --cached $against | grep -v ^D | cut -c3-)
+do
+	if [[ "$f" =~ [.](h|m|c|rb|sh|py|txt|md|f90|F90|cmake|x64)$ ]]
+	then
+		if ! ends_with_newline "$f"
+		then
+			echo "No newline at end of file: $f" 1>&2
+			exit 1
+		fi
+	fi
+done
 
 # If there are whitespace errors, print the offending file names and fail.
 exec git diff-index --check --cached $against --

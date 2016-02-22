@@ -8,7 +8,7 @@
 [core]
 	excludesfile = ~/.gitignore_global
 	autocrlf = input
-	editor = Emacs -nw -Q
+	editor = emacs -nw --no-splash -q -l ~/.gitsettings-repo/util/git-commit-message.el
 	whitespace = trailing-space,space-before-tab,blank-at-eol,blank-at-eof
 	attributesfile = ~/.gitattributes_global
 [color]
@@ -45,6 +45,10 @@
 	last = log --show-notes=* -1 HEAD
 	pushNotes = push origin refs/notes/*
 	stash-rename = "!_() { rev=$(git rev-parse $1) && git stash drop $1 || exit 1 ; git diff-index --quiet HEAD; s=$?; [ $s != 0 ] && git stash save \"tmp stash from stash-rename\"; git stash apply $rev && shift && git stash save \"$@\" && [ $s != 0 ] && git stash pop stash@{1}; }; _"
+	reup = pull --rebase
+	pop = stash pop --index
+	save = stash save --keep-index
+	brs = branch -avvv
 [branch]
 	autosetupmerge = true
 [gui]
