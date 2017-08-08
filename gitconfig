@@ -28,6 +28,7 @@
 	changed = green
 	untracked = cyan
 [alias]
+	fap = fetch --all --prune
 	st = status
 	ci = commit
 	br = branch
